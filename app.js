@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 
 const adminRoutes = require("./routes/admin");
-app.use('/admin', adminRoutes);
+app.use('/', adminRoutes);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

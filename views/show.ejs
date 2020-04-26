@@ -4,32 +4,35 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Title</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('includes/nav.ejs') %>
   </head>
+
+ 
   <style>
-    body {background-color:lawngreen} ;
+    body {background-color: #ffb3b3} ;
   </style>
   <body>
-    <%- include('includes/nav.ejs') %>
-    <main>
-            
-     
-        <div class="grid">
-            <% for (let rs in recipe) { %>
-               
-                <header class="card__header">
-                    <h1 class="product__title"><%= rs.recipe.label %></h1>
-                </header>
-                <div class="card__image">
-                    <img src=rs.recipe.image alt="A Book">
-                </div>
-                <div class="card__content">
-                    <h2 class="product__price">rs.recipe.calories</h2>
-                  
-                </div>
-              
-        <% } %>
-        </div>
    
+    
+    <main>
+        <div class="container">
+            <div class="row">
+                <% for (rs in recipes) { %>
+              <div class="col order-last">
+                <div class="card" style="width: 18rem; margin-top: 20px; margin-left 20px; border-color: black;">
+                    <img class="card-img-top" src=<%= recipes[rs].recipe.image %> alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= recipes[rs].recipe.label %>
+                      </h5>
+                      <p class="card-text"><p>Calories:</p><%= recipes[rs].recipe.calories %></p>
+                      <a href=<%= recipes[rs].recipe.url %> class="btn btn-primary">Read Recipe</a>
+                    </div>
+                  </div>
+              </div>
+              <% } %>
+            </div>
+            </div>
+       
      
   </main>
      

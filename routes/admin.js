@@ -8,37 +8,32 @@ const fetch = require("node-fetch");
 const axios = require('axios');
 const appkey = "8c270b26b309974a2e1ffad14cf20c0b";
 const appid = "b2673545"
-const recipes = []
+let recipes = []
 
 // /admin/add-product => POST
-router.post('/add-recipe', (req, res, next) => {
+router.post('/add-recipe', async (req, res, next) => {
   var p = req.body.search
   
-  const recipe = makeGetRequest(p);
-  console.log(typeof(recipes))
-  /*console.log(req.body.search);*/
-  console.log(p)
-  console.log("ketaki");
+  recipes= await makeGetRequest(p);
+
+  for (el in recipes){
+    console.log(el);
+    
+  }
   
-  res.render('show',{
-    recipe,
-    pageTitle : "Recipes"
-  });
+  res.redirect("/show");
 });
 
-router.get('/add-recipe', (req, res, next) => { 
-  res.render('index', {
-    recipes,
-    path: '/admin/add-recipe',
-    pageTitle: 'index',
-  });
+router.get('/', (req, res, next) => { 
+  res.render('index'
+    );
 });
 
 const makeGetRequest = async (p)=>{
   try {
     let res = await axios.get(`https://api.edamam.com/search?q=${p}&app_id=${appid}&app_key=${appkey}`);
     const data = res.data.hits;
-    console.log(typeof(data));
+    // console.log(data);
     
     
     return data;
@@ -47,5 +42,10 @@ const makeGetRequest = async (p)=>{
     return null;
   }  
 }
+
+router.get("/show",(req,res)=>{
+
+  res.render("show",{recipes});
+})
 
 module.exports = router;
