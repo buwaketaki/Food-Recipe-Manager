@@ -1,24 +1,114 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
     <title>Title</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <style>
-    body {background-color:ivory} ;
+    body {
+      background-image: url(https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);
+      background-size: cover;
+    }
+    
+
+    /* Create two equal columns that sits next to each other */
+  
+
+    h1 {
+      color: whitesmoke;
+
+      text-align: center;
+    }
   </style>
   <body>
-    <%- include('includes/nav.ejs') %>
-    <main>
-      <h1>Dashboard</h1>  
-            
-        
-     
-  </main>
-     
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <nav
+      class="navbar navbar-expand-lg navbar-light"
+      style="
+        margin-bottom: 10px;
+        font-family: Freestyle Script;
+        font-size: 130px;
+        box-shadow: 5px 5px 10px rgb(127, 156, 218);
+        justify-content:safe
+      "
+    >
+      <h1>
+        <a
+          href="/auth/logout"
+          style="text-align: left; margin-left: 50px; color: cornsilk;"
+          >Logout</a
+        >
+      </h1>
+      <h1>
+        <a
+          href="/new_recipe"
+          style="text-align: left; margin-left: 100px; color: cornsilk;"
+          >Add Recipe</a
+        >
+      </h1>
+      <h1>
+        <a
+          href="/show_recipe"
+          style="text-align: left; margin-left: 100px; color: cornsilk;"
+          >Show Recipe</a
+        >
+      </h1>
+    </nav>
+    <h1>
+      <div
+        style="
+          font-family: Freestyle Script;
+          font-size: 200px;
+          text-shadow: 5px 5px 8px crimson;
+        "
+      >
+        Recipes
+      </div>
+    </h1>
+    <form class="form-inline" action="/add-recipe" method="POST">
+      <input
+        class="form-control"
+        type="search"
+        placeholder="Search"
+        name="search"
+        aria-label="Search"
+        style="width: 85%; box-shadow: 2px 2px 4px rgb(122, 233, 78);"
+      />
+      <button
+        class="btn btn-outline-success my-2 my-sm-0"
+        type="submit"
+        style="
+          margin-left: 20px;
+          background-color: dimgray;
+          color: floralwhite;
+        "
+      >
+        Search for recipe
+      </button>
+    </form>
+    <b> </b>
+
+    <main></main>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

@@ -1,16 +1,31 @@
 const path = require('path');
 
+
 const express = require('express');
+const middleware = require("../middleware");
 
 const router = express.Router();
-
+const passport = require('passport');
 const fetch = require("node-fetch");
 const axios = require('axios');
 const appkey = "8c270b26b309974a2e1ffad14cf20c0b";
 const appid = "b2673545"
 let recipes = []
+let dum =[]
+const recipeController = require('../controllers/recipe_main')
 
-// /admin/add-product => POST
+router.get('/show_recipe', recipeController.getRecipes);
+router.get('/',(req,res,next)=>{res.redirect('/auth');})
+ 
+router.get('/edit_recipe/:recipeid',middleware.checkOwnership, recipeController.getEditRecipe )
+router.get('/delete_recipe/:recipeid',middleware.checkOwnership, recipeController.postDeleteRecipe)
+
+router.get('/new_recipe',middleware.authCheck,(req, res, next) => {
+  res.render("add_Recipe");
+});
+//router.post('/register',  res.render("index");)
+router.post('/new_recipe', recipeController.postAddRecipe)
+router.post('/edit_recipe/:recipeid', recipeController.postEditRecipe)
 router.post('/add-recipe', async (req, res, next) => {
   var p = req.body.search
   
@@ -24,8 +39,8 @@ router.post('/add-recipe', async (req, res, next) => {
   res.redirect("/show");
 });
 
-router.get('/', (req, res, next) => { 
-  res.render('index'
+router.get('/auth', (req, res, next) => { 
+  res.render('login'
     );
 });
 
@@ -42,10 +57,15 @@ const makeGetRequest = async (p)=>{
     return null;
   }  
 }
-
+router.get("/showDescription/:rsid", recipeController.showDes)
 router.get("/show",(req,res)=>{
 
   res.render("show",{recipes});
+})
+
+router.get("/index",(req,res)=>{
+  console.log(req.user)
+  res.render("index",{user:req.user})
 })
 
 module.exports = router;

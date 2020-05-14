@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Title</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <style>
+    label{
+      margin-top: 20px;
+    }
+  </style>
+    <%- include('includes/nav.ejs') %>
+    <h4 style="text-align: center; color:navy; margin-top: 40px; font-family:cursive;">Edit Recipe</h4>
+    <h6>
+        <div style="background-color:rgb(222, 241, 241); margin-top: 50px; padding-left: 20px">
+    <form  style="box-shadow:2px 2px 4px  cyan; color: rebeccapurple;" action="/edit_recipe/<%= rec._id %>" method="POST">
+        <label for="name">Add name</label>
+        <div class="row">
+            
+          <div class="col">
+            <input type="text" class="form-control" placeholder="First name" id="name" value=<%= rec.first_name %> name="first_name">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Last name" id="name"  name="last_name" value=<%= rec.last_name %>>
+          </div>
+        </div>
+        <label for="rec_nm">Recipe Name</label>
+        <div >
+            <input type="text" class="form-control" value=<%= rec.rec_nm %>  id="rec_nm" name="rec_nm">
+        </div>
+        <label for="calories">Calories</label>
+        <div>
+            <input type="number" class="form-control"  id="calories" name="calories" value=<%= rec.calories %>>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Description</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  name="discp" </textarea><%= rec.discp %></textarea>
+          </div>
+       
+          <button class="btn" type="submit">Submit</button>
+      </form>
+    </div>
+    </h6>
+
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="/js/main.js"></script>
+  </body>
+  
+  </html>

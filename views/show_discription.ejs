@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <title>Title</title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+      
+</head>
+<body style="background-color:cornsilk">
+  <%- include('includes/nav.ejs') %>
+  >
+    <div class="card w-90" >
+        <div class="card-body" >
+          <h2 class="card-title" style="color: crimson;text-shadow:1px 1px 4px darkviolet; margin-bottom: 10px; font-family:cursive; ">Description of Recipe</h2>
+          <h4 class="card-text" style="text-align:justify; min-height: 300px;box-shadow:5px 5px 8px darkviolet; background-color:cornsilk;"><%= rec.discp %></h4>
+          <a href="/edit_recipe/<%= rec._id %>" class="btn btn-primary btn-sm" style="margin-top:10px;font-family:cursive; margin-left:2%; width: 8rem ; background-color:rgb(54, 15, 54)"><h6>Edit Recipes </h6></a>
+          <a href="/showDescription/<%= rec._id %>/comments/new"  class="btn btn-primary btn-sm" style=" margin-top:10px;margin-left: 33%; font-family:cursive; width: 8rem; background-color:rgb(54, 15, 54)"><h6>Add Comments</h6></a>
+  
+<a href="/delete_recipe/<%= rec._id %>?delete=true"  class="btn btn-primary btn-sm" style="margin-top:10px;font-family:cursive; margin-left: 30%; background-color:rgb(54, 15, 54); width: 8rem"><h6>Delete Recipe</h6></a>
+
+        </div>
+      </div>
+   
+
+                      
+ <h3 style="color: rgb(50, 4, 65);text-shadow:2px 2px 6px rgb(226, 135, 219); margin-top: 20px; font-family:cursive; ">Comments</h3>
+<p><% rec.comments.forEach(function(comment){ %>  
+    
+<div class="card w-75" style="box-shadow:2px 2px 6px dimgray ; margin-top:20px;">
+    <div class="card-body" >
+      <h6 class="card-title"><%= comment.user.username %></h6>
+      <p class="card-text" style="margin-bottom:20px ;"><%= comment.description %></p>
+      <% if(comment.user.id.equals(user._id) ){ %>
+        
+      <a href="/showDescription/<%= rec._id %>/comments/<%= comment._id %>/edit" class="btn btn-primary btn-sm" style="margin-right: 30px; width: 8rem">Edit</a>
+      <a href="/showDescription/<%= rec._id %>/comments/<%= comment._id %>"  class="btn btn-primary btn-sm" style=" width: 8rem">Delete</a>
+    <% } %>
+    </div>
+  </div>
+
+        <% }) %>  </p>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        
+</body>
+</html>
